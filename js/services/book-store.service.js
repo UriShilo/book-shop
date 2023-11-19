@@ -26,8 +26,11 @@ function readBook() {
 
 }
 
-function updateBook() {
-
+function updateBook(bookId, price) {
+  const book = gBooks.find(book => book.id === bookId)
+  book.price = price
+  saveToStorage(STORAGE_KEY, gBooks)
+  return book
 }
 
 function removeBook(bookId) {

@@ -17,7 +17,7 @@ function renderBooks() {
     <td>${book.title}</td>
     <td>$${book.price}</td>
     <td><button onclick="onRead('${book.id}')">Read</button></td>
-    <td><button onclick="onUpdate('${book.id}')">Update</button></td>
+    <td><button onclick="onUpdateBook('${book.id}')">Update</button></td>
     <td><button onclick="onRemoveBook('${book.id}')">Delete</button></td>
     </tr>`
   }).join('')
@@ -43,9 +43,13 @@ function onReadBook() {
   // <modal>
 
 }
-function onUpdateBook() {
-  // updateRate(bookId, bookPrice)
+function onUpdateBook(bookId) {
+  const price = +prompt('new price:')
+  if(!price)return
+  updateBook(bookId, price)
+  renderBooks()
 }
+
 function onRemoveBook(bookId) {
   removeBook(bookId)
   renderBooks()
