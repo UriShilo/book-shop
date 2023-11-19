@@ -16,7 +16,7 @@ function renderBooks() {
     <td>${book.id}</td>
     <td>${book.title}</td>
     <td>$${book.price}</td>
-    <td><button onclick="onRead('${book.id}')">Read</button></td>
+    <td><button onclick="onReadBook('${book.id}')">Read</button></td>
     <td><button onclick="onUpdateBook('${book.id}')">Update</button></td>
     <td><button onclick="onRemoveBook('${book.id}')">Delete</button></td>
     </tr>`
@@ -30,22 +30,32 @@ function onAddBook() {
   var title = prompt('book title:')
   var price = prompt('book price:')
 
-if(!title || !price)return
+  if (!title || !price) return
 
   addBook(title, price)
   renderBooks()
 }
 
-function onReadBook() {
-  // onReadBook(bookId)
+function onReadBook(bookId) {
+  const book = getBookById(bookId)
+  const elModal = document.querySelector('.modal')
+
+  elModal.querySelector('h3').innerText = book.title
+  elModal.querySelector('h4 span').innerText = book.price
+  elModal.querySelector('p').innerText = book.description
+
+  elModal.classList.add('open')
+
+
   // strHTML = <modal elements go here...>
   // <h2>Book name<h/h2>
   // <modal>
 
 }
+
 function onUpdateBook(bookId) {
   const price = +prompt('new price:')
-  if(!price)return
+  if (!price) return
   updateBook(bookId, price)
   renderBooks()
 }
@@ -53,4 +63,8 @@ function onUpdateBook(bookId) {
 function onRemoveBook(bookId) {
   removeBook(bookId)
   renderBooks()
+}
+
+function onCloseModal() {
+  document.querySelector('.modal').classList.remove('open')
 }

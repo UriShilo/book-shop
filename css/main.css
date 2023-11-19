@@ -1,18 +1,51 @@
-*{
+* {
   box-sizing: border-box;
 }
 
-h1{
+h1 {
   color: blue;
 }
 
-table{
+table {
   border: 1px solid black;
 }
 
-th{
+th {
   border: 1px solid black;
 }
-td{
+
+td {
   border: 1px solid black;
+}
+
+.modal {
+  position: fixed;
+  right: -20vw;
+  top: 5vh;
+  width: 20vw;
+  height: 40vh;
+  background-color: black;
+  color: white;
+  padding-inline: 1.5em;
+  transition: 0.5s;
+  /* overflow-block: scroll; */
+
+}
+
+.button-close-modal {
+  position: absolute;
+  right: 3%;
+  top: 3%;
+  background-color: red;
+  color: white;
+  font-weight: bold;
+}
+
+.modal h3 {
+  text-decoration: underline;
+}
+
+.modal.open {
+  right: 10vw;
+
 }

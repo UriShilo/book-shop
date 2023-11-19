@@ -10,8 +10,6 @@ function getBooks() {
   return gBooks
 }
 
-
-
 function addBook(title, price) {
   console.log(title, price)
   const book = _createBook(title, price)
@@ -22,12 +20,8 @@ function addBook(title, price) {
 
 }
 
-function readBook() {
-
-}
-
 function updateBook(bookId, price) {
-  const book = gBooks.find(book => book.id === bookId)
+  const book = getBookById(bookId)
   book.price = price
   saveToStorage(STORAGE_KEY, gBooks)
   return book
@@ -40,8 +34,9 @@ function removeBook(bookId) {
   return book
 }
 
-
-
+function getBookById(bookId) {
+  return gBooks.find(book => book.id === bookId)
+}
 
 function _createBooks() {
   gBooks = loadFromStorage(STORAGE_KEY)
@@ -62,6 +57,7 @@ function _createBook(title, price) {
   return {
     id: makeId(),
     title,
-    price
+    price,
+    description: makeLorem()
   }
 }
