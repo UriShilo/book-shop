@@ -46,11 +46,6 @@ function onReadBook(bookId) {
 
   elModal.classList.add('open')
 
-
-  // strHTML = <modal elements go here...>
-  // <h2>Book name<h/h2>
-  // <modal>
-
 }
 
 function onUpdateBook(bookId) {

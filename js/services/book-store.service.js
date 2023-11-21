@@ -11,13 +11,11 @@ function getBooks() {
 }
 
 function addBook(title, price) {
-  console.log(title, price)
+  // console.log(title, price)
   const book = _createBook(title, price)
   gBooks.push(book)
   saveToStorage(STORAGE_KEY, gBooks)
-
   return book
-
 }
 
 function updateBook(bookId, price) {
@@ -35,7 +33,10 @@ function removeBook(bookId) {
 }
 
 function getBookById(bookId) {
-  return gBooks.find(book => book.id === bookId)
+  const book = gBooks.find(book => book.id === bookId)
+  if (book) return book
+  else console.error(`book ${bookId} not found`)
+
 }
 
 function _createBooks() {
